@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 dotenv.config();
-const {JWT_SECRET,mongoURI} = require('./config/keys')
+const {PORT,JWT_SECRET,mongoURI} = require('./config/keys')
 const connectToMongo = ()=>{
     try{
     mongoose.connect(mongoURI, 

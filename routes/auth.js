@@ -8,12 +8,12 @@ const bcrypt = require('bcryptjs');
 var jwt = require('jsonwebtoken');
 var fetchuser = require('../middleware/fetchuser');
 
-const {JWT_SECRET,MONGOURI} = require('../config/keys')
+const {PORT,JWT_SECRET,MONGOURI} = require('../config/keys')
 
 // ROUTE 1: Create a User using: POST "/api/auth/createuser". No login required
 router.post('/createuser', [
   body('name', 'Enter a valid name').isLength({ min: 3 }),
-  body('email', 'Enter a valid email').isEmail(),
+  body('email', 'Enter a valid email').ispoEmail(),
   body('password', 'Password must be atleast 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
   let success = false;
