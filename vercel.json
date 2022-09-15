@@ -7,8 +7,18 @@
     ],
     "routes":[
         {
-            "src":"/.*",
-            "dest": "/"
+            "src":"/user",
+            "methods" : [
+                "POST","GET"
+            ],
+            "dest": "/api/auth/user.js"
+        },
+        {
+            "src": "/note",
+            "methods": [
+                "GET","POST"
+            ],
+            "dest": "/api/auth/notes.js"
         }
     ]
 
