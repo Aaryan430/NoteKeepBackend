@@ -14,11 +14,19 @@ app.use(express.json())
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/notes', require('./routes/notes'))
 
-if ( process.env.NODE_ENV == "production"){
-  const path = require("path");
+const path = require("path");
+
+if (process.env.NODE_ENV == "production") {
   app.get("/", (req, res) => {
-      app.use(express.static(path.resolve(__dirname,'frontend','build')));
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+    res.send("Server working in production");
+    // app.use(express.static(path.resolve(__dirname, 'frontend', 'build')));
+    // res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+} else {
+  app.get("/", (req, res) => {
+    res.send("Server working in developemnt mode properly")
+    // app.use(express.static(path.resolve(__dirname,'frontend','build')));
+    // res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
   })
 }
 

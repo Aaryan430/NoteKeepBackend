@@ -1,20 +1,17 @@
 const mongoose = require('mongoose');
 const dotenv = require("dotenv");
 dotenv.config();
-const {PORT,JWT_SECRET,mongoURI} = require('./config/keys')
-const connectToMongo = ()=>{
-    try{
-    mongoose.connect(mongoURI, 
-        {
+const data = require('./config/keys')
+const connectToMongo = () => {
+    try {
+        mongoose.connect(data.MONGOURI, {
             useNewUrlParser: "true",
             useUnifiedTopology: "true"
-          
-          },
-        ()=>{
-        console.log("Connected to Mongo Successfully");
-    })
+        }, () => {
+            console.log("Connected to Mongo Successfully");
+        })
     }
-    catch{
+    catch (error) {
         console.log(error);
     }
 }
